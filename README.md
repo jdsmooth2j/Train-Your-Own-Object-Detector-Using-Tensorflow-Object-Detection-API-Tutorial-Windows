@@ -21,7 +21,7 @@ This readme exlpores every step required to get you through with your customized
 
 The repository have all the files needed to train an "insect detector" that can accurately detect whiteflies and eggplant fruit and shoot borer (EFSB). You can replace these files with your own files to train an object detection classifier for whatever concept you have in mind. This tutorial also have python scripts to test your own object detector out on an image, video, or webcam feed.
 
-![alt text](https://github.com/jdsmooth2j/Train-Customized-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/test_output_05_threshold%3D0.6.png)
+![alt text](https://github.com/jdsmooth2j/Train-Your-Own-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/test_output_05_threshold%3D0.6.png)
 
 ## Introduction
 
@@ -78,7 +78,7 @@ This tutorial was based using **TensorFlow v1.5.0** and this GitHub commit of th
 #### 2B. Download the Faster-RCNN-Inception-V2-COCO Model from TensorFlow's Model Zoo
 TensorFlow provides several object detection models (pre-trained classifiers with specific neural network architectures) on its model zoo. I tried the SSD-MobileNet COCO v2 model on my first try. This model allows faster detection but have less accuracy, while on my second try I used the Faster-RCNN Inception v2 model and it gives slower detection but have a significant increase in accuracy (more accurate than SSD Mobilenet COCO v2 model by far but with a noticeably slower speed).
 
-![alt text](https://github.com/jdsmooth2j/Train-Customized-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/SSD_v2_VS_FasterRCNN_Inception_v2.png?raw=true)
+![alt text](https://github.com/jdsmooth2j/Train-Your-Own-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/SSD_v2_VS_FasterRCNN_Inception_v2.png?raw=true)
 
 You can choose whichever model you want to train your own objection detection classifier. If you are planning to deploy the object detector on a device with low computational power (such as Raspberry Pi and a mediocre/average quality laptop), use the SDD-MobileNet model. Otherwise use a higher-end laptop or desktop PC if you plan to deploy it using the Faster R-CNN models.
 
@@ -91,7 +91,7 @@ Note: The model date and version will likely change in the future, but it should
 Download the full repository located on this page (scroll to the top and click Clone or Download) and extract all the contents directly into the "C:\tensorflow1\models\research\object_detection" directory. (You can overwrite the existing "README.md" file.) This establishes a specific directory structure that will be used for the rest of the tutorial.
 
 Here is what "C:\tensorflow1\models\research\object_detection" folder should look like:
-![alt text](https://github.com/jdsmooth2j/Train-Customized-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/directory_tensorflow1.png?raw=true)
+![alt text](https://github.com/jdsmooth2j/Train-Your-Own-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/directory_tensorflow1.png?raw=true)
 
 This tutorial repository contains the images, annotation data, .csv files, and TFRecords needed to train an "Insect Detector". You can use these images and data to practice making your own Insect Detector. It also has Python scripts that are used to generate the training data and it has scripts to test the object detection classifier out on images, on videos, or on a webcam feed.
 
@@ -185,7 +185,7 @@ Refer to the below link for the list of errors Edje Electronics encountered whil
 https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10#appendix-common-errors
 
 Note: If you don't get any errors while running the full Jupyter Notebook, and the labeled pictures still don't appear, try this and go to "object_detection/utils/visualization_utils.py" and edit the import statements around lines 29 and 30 that include matplotlib using IDLE, Notepad++ or open another Jupyter Notebook. Then, try re-running it again.
-![alt text](https://github.com/jdsmooth2j/Train-Customized-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/object_detection_tutorial_jupyter_notebook_dogs.jpg?raw=true)
+![alt text](https://github.com/jdsmooth2j/Train-Your-Own-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/object_detection_tutorial_jupyter_notebook_dogs.jpg?raw=true)
 
 ### 3. Gather and Label Images
 Now that we have the TensorFlow Object Detection API all set up and ready to go, we need to provide the images it will use to train a new object detection classifier.
@@ -194,7 +194,7 @@ Now that we have the TensorFlow Object Detection API all set up and ready to go,
 TensorFlow requires hundreds of images of an object to obtain and train a good detection classifier. The training images should have random objects in the image along with the desired objects, and should have a variety of backgrounds and lighting conditions to train a strong classifier. There should be some images where the desired object is partially unclear, overlapped with something else, or only halfway in the picture.
 
 For my "insect detector", I have two different objects I want to detect (one is whitefly, and the other is eggplant fruit and shoot borer or simply EFSB). I gathered all the image samples from Google Images. For my training dataset, I have about 130 images for whiteflies and about 100 images for EFSB, with a variety of other non-desired objects in some of those pictures.
-![alt text](https://github.com/jdsmooth2j/Train-Customized-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/training_images_folder.png?raw=true)
+![alt text](https://github.com/jdsmooth2j/Train-Your-Own-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/training_images_folder.png?raw=true)
 
 You can use either your phone to take pictures of the objects you want to train or download images of those objects from Google Image Search and try to add an extension to your browser to collect all images at once. I recommend the "Download All Images" Chrome extension to gather all images in one zip file. I have about 230 training images and 55 test images for this tutorial.
 
@@ -208,8 +208,8 @@ LabelImg GitHub link: https://github.com/tzutalin/labelImg
 LabelImg download link: https://www.dropbox.com/s/tq7zfrcwl44vxan/windows_v1.6.0.zip?dl=1
 
 Download and install LabelImg, point it to your \images\train directory, and then draw a box around each object in each image. Repeat the process for all the images in the \images\test directory. This is kind of rigorous but is rewarding after the process.
-![alt text](https://github.com/jdsmooth2j/Train-Customized-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/labels_EFSB_many.png?raw=true)
-![alt text](https://github.com/jdsmooth2j/Train-Customized-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/labels_whitefly_many.png?raw=true)
+![alt text](https://github.com/jdsmooth2j/Train-Your-Own-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/labels_EFSB_many.png?raw=true)
+![alt text](https://github.com/jdsmooth2j/Train-Your-Own-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/labels_whitefly_many.png?raw=true)
 
 LabelImg saves a *.xml* file containing the label data for each image and these .xml files will be used to generate TFRecords, which are one of the inputs to the Tensorflow trainer. Once you have labeled and saved each image, there will be one .xml file for each image in the \test and \train directories.
 
@@ -245,8 +245,10 @@ With the following:
         None
 ```
 Afterwards, generate the *TFRecord files* by running the following commands from the "\object_detection" folder:
+```
     python generate_tfrecord.py --csv_input=images\train_labels.csv --image_dir=images\train --output_path=train.record
     python generate_tfrecord.py --csv_input=images\test_labels.csv --image_dir=images\test --output_path=test.record
+```
 These generate a *train.record* and a *test.record* file in "\object_detection" folder. These will be used to train the new object detection classifier.
 
 ### 5. Create the Label Map and Configure the Training
@@ -310,7 +312,7 @@ All set?! From the "\object_detection" directory, issue the following command to
     python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_pets.config
 
 After considering or doing everything correctly, TensorFlow will initialize the training and the initialization can take up to 30 seconds before the actual training begins. When the training begins, it will look like this:
-![alt text](https://github.com/jdsmooth2j/Train-Customized-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/training.jpg?raw=true)
+![alt text](https://github.com/jdsmooth2j/Train-Your-Own-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/training.jpg?raw=true)
 
 Each step of the training reports the *loss*. This loss will *start high* but will *get lower as the training progresses*. In my training, using faster_rcnn_inception_v2_coco_2018_01_28 model, the training loss started between 2 to 3 and then gradually decreases as the training goes. *Edje Electronics* suggests 'allowing your model to train until the loss consistently drops below **0.05**, which will take *about 40,000 steps*, or *about 2 hours* (**depending on how powerful your CPU and GPU are**)'. 
 Note: The loss numbers will be different if a different model is used. In my traing, using SSD MobileNet COCO v2 model, it starts with a loss of about 15, and should be trained until the loss is consistently under 2 as recommended by *Edje Electronics*.
@@ -318,9 +320,9 @@ Note: The loss numbers will be different if a different model is used. In my tra
 If you want to view the progress of the training, use **TensorBoard**. To get this done, open a new instance of Anaconda Prompt, activate the tensorflow1 virtual environment, change the directory to "C:\tensorflow1\models\research\object_detection", and run the following command:
     (tensorflow1) C:\tensorflow1\models\research\object_detection>tensorboard --logdir=training
 This will create a webpage on your local machine at "*YourPCName:6006*", which can be viewed through a web browser(such as *Chrome or Firefox*). The TensorBoard page provides information and graphs that show how the training goes as each goes by. One graph to look at is the *Loss Graph*, which shows the *overall loss of the classifier over time*.
-![alt text](https://github.com/jdsmooth2j/Train-Customized-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/insect_detector_graph_training_loss_10000steps_01.png?raw=true)
+![alt text](https://github.com/jdsmooth2j/Train-Your-Own-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/insect_detector_graph_training_loss_10000steps_01.png?raw=true)
 
-![alt text](https://github.com/jdsmooth2j/Train-Customized-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/insect_detector_graph_training_loss_10000steps_02.png?raw=true)
+![alt text](https://github.com/jdsmooth2j/Train-Your-Own-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/insect_detector_graph_training_loss_10000steps_02.png?raw=true)
 
 The training job regularly saves checkpoints about every five minutes. You can terminate the training by pressing *Ctrl+C* while in the command prompt window if you want to stop the training and test or start the training again later, and it will restart/resume from the last saved checkpoint. The checkpoint at the highest number of steps will be used to generate the 'frozen inference graph'.
 
@@ -361,7 +363,7 @@ Alternatively, you can just run the them in the Anaconda Command Prompt to test 
     python object_detection_webcam.py
 
 Assuming everything is *working properly*, the object detector will initialize for about a few seconds and then display a window showing any objects it has detected in the image file, in the video file or in the webcam you have fed. Shown below is a snippet of the test run.
-![alt text](https://github.com/jdsmooth2j/Train-Customized-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/detection_4.png?raw=true)
+![alt text](https://github.com/jdsmooth2j/Train-Your-Own-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/detection_4.png?raw=true)
 
 If you have encounter some errors, check the GitHub link below for common errors while setting up the object detection classifier. 
 https://github.com/EdjeElectronics/TensorFlow-Object-Detection-API-Tutorial-Train-Multiple-Objects-Windows-10#appendix-common-errors)
