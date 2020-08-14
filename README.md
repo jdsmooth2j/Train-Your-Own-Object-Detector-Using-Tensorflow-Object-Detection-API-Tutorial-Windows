@@ -2,7 +2,7 @@
 Train Your Own Object Detection Classifier Using TensorFlow on Windows 8.1
 Credits goes out to *Edje Electronics* and *Dat Tran* for their work relating to this tutorial.
 
-## Brief Summary
+## Quick Summary
 
 This repository is a step by step process for training your own object detection classifier using TensorFlow's object detection API to detect multiple objects on Windows 10, 8, or 7. (As per Edje Electronics, it will also work on Linux-based OSes with some minor changes. Haven't tried it yet.) The tutorial was originally written using TensorFlow version 1.5.0. (This will also work for newer versions of TensorFlow.)
 
