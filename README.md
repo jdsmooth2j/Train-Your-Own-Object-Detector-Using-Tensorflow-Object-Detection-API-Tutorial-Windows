@@ -11,13 +11,13 @@ Try to watch the excellent YouTube video tutorial made by Edje Electronics only 
 
 This readme exlpores every step required to get you through with your customized object detection classifier:
 1. Installing Anaconda, CUDA, and cuDNN
-2. Setting up the Object Detection directory structure and Anaconda Virtual Environment
-3. Gathering and labeling pictures
-4. Generating training data
-5. Creating a label map and configuring training
+2. Setting up the Object Detector Directory Structure and Anaconda Virtual Environment
+3. Gathering and Labeling Images
+4. Generating Training data
+5. Creating a Label Map and Configuring Training
 6. Training
-7. Exporting the inference graph
-8. Testing and using your newly trained object detection classifier
+7. Exporting the Inference Graph
+8. Testing and Using Your Newly Trained Object Detection Classifier
 
 The repository have all the files needed to train an "insect detector" that can accurately detect whiteflies and eggplant fruit and shoot borer (EFSB). You can replace these files with your own files to train an object detection classifier for whatever concept you have in mind. This tutorial also have python scripts to test your own object detector out on an image, video, or webcam feed.
 
@@ -66,14 +66,14 @@ If you are using an older version of TensorFlow, here is a table showing which G
 TF v1.7	                |  https://github.com/tensorflow/models/tree/adfd5a3aca41638aa9fb297c5095f33d64446d8f
 TF v1.8	                |  https://github.com/tensorflow/models/tree/abd504235f3c2eed891571d62f0a424e54a2dabc
 TF v1.9	                |  https://github.com/tensorflow/models/tree/d530ac540b0103caa194b4824af353f1b073553b
-TF v1.10	               |  https://github.com/tensorflow/models/tree/b07b494e3514553633b132178b4c448f994d59df
-TF v1.11	               |  https://github.com/tensorflow/models/tree/23b5b4227dfa1b23d7c21f0dfaf0951b16671f43
-TF v1.12	               |  https://github.com/tensorflow/models/tree/r1.12.0
-TF v1.13	               |  https://github.com/tensorflow/models/tree/r1.13.0
-Latest version	         |  https://github.com/tensorflow/models
+TF v1.10	            |  https://github.com/tensorflow/models/tree/b07b494e3514553633b132178b4c448f994d59df
+TF v1.11	            |  https://github.com/tensorflow/models/tree/23b5b4227dfa1b23d7c21f0dfaf0951b16671f43
+TF v1.12	            |  https://github.com/tensorflow/models/tree/r1.12.0
+TF v1.13	            |  https://github.com/tensorflow/models/tree/r1.13.0
+Latest version	        |  https://github.com/tensorflow/models
 
 Note:
-This tutorial was based using TensorFlow v1.5 and this GitHub commit of the TensorFlow Object Detection API. If portions of this tutorial do not work, it may be necessary to install TensorFlow v1.5 and use this exact commit rather than the most up-to-date version.
+This tutorial was based using **TensorFlow v1.5.0** and this GitHub commit of the TensorFlow Object Detection API. If portions of this tutorial do not work, it may be necessary to install TensorFlow v1.5 and use this exact commit rather than the most up-to-date version.
 
 #### 2B. Download the Faster-RCNN-Inception-V2-COCO Model from TensorFlow's Model Zoo
 TensorFlow provides several object detection models (pre-trained classifiers with specific neural network architectures) on its model zoo. I tried the SSD-MobileNet COCO v2 model on my first try. This model allows faster detection but have less accuracy, while on my second try I used the Faster-RCNN Inception v2 model and it gives slower detection but have a significant increase in accuracy (more accurate than SSD Mobilenet COCO v2 model by far but with a noticeably slower speed).
@@ -84,7 +84,7 @@ You can choose whichever model you want to train your own objection detection cl
 
 This tutorial utilizes the Faster-RCNN-Inception-V2 model. Download the model here:
 http://download.tensorflow.org/models/object_detection/faster_rcnn_inception_v2_coco_2018_01_28.tar.gz
-Open the just downloaded "faster_rcnn_inception_v2_coco_2018_01_28.tar.gz" file with a file archiver and extractor such as WinRAR, WinZip or 7-Zip and extract the "faster_rcnn_inception_v2_coco_2018_01_28" folder to the C:\tensorflow1\models\research\object_detection folder. 
+Open the just downloaded *faster_rcnn_inception_v2_coco_2018_01_28.tar.gz* file with a file archiver and extractor such as *WinRAR*, *WinZip* or *7-Zip* and extract the *faster_rcnn_inception_v2_coco_2018_01_28* folder to the C:\tensorflow1\models\research\object_detection folder. 
 Note: The model date and version will likely change in the future, but it should still work with this tutorial.
 
 #### 2C. Download this tutorial's repository from my GitHub
@@ -113,16 +113,22 @@ And now, you are all set to start training your own object detector from scratch
 Search for the Anaconda Prompt utility from the Start menu on Windows. Right click on it, and click “Run as Administrator”. Windows will ask you if you would like to allow it to make changes for your computer, click Yes.
 
 In the command line interface that pops up after clicking Yes, create a new virtual environment called “tensorflow1” by running the following command:
+```
     C:\> conda create -n tensorflow1 pip python=3.5
-
+```
 Activate the environment:
+```
     C:\> activate tensorflow1
-
+```
 Update pip:
+```
     (tensorflow1) C:\>python -m pip install --upgrade pip
+```
 
 Install tensorflow-gpu in this environment by issuing:
+```
     (tensorflow1) C:\> pip install --ignore-installed --upgrade tensorflow-gpu
+```
 Note: You can also use the TensorFlow CPU version, but it will run much slower. If you wish to proceed with the CPU-only version, just use "tensorflow" instead of "tensorflow-gpu" in the previous command.
 
 Install the other necessary packages by issuing the following commands:
@@ -141,19 +147,23 @@ Note: The ‘pandas’ and ‘opencv-python’ packages are not needed by Tensor
 
 #### 2E. Configure the "PYTHONPATH" Environment Variable
 A PYTHONPATH variable must be created that points to the "\models", "\models\research", and "\models\research\slim directories". Do this by issuing the following commands (from any directory):
+```
     (tensorflow1) C:\> set PYTHONPATH=C:\tensorflow1\models;C:\tensorflow1\models\research;C:\tensorflow1\models\research\slim
-(Note: Every time you exit the "tensorflow1" virtual environment, the PYTHONPATH variable will be reset and you have to be set it up again. To check if it has been set or not, run "echo %PYTHONPATH%".)
+```
+(Note: Every time you exit the *tensorflow1* virtual environment, the PYTHONPATH variable will be reset and you have to be set it up again. To check if it has been set or not, run "*echo %PYTHONPATH%*".)
 
 #### 2F. Compile Protobufs Files and Run "setup.py"
 Compiled Protobuf files are used by TensorFlow to configure model and training parameters. Unfortunately, the "short protoc" compilation command posted on TensorFlow’s Object Detection API installation page does not work on "Windows". Every ".proto file" in the "\object_detection\protos" directory must be called out individually by the command.
 
 In the Anaconda Command Prompt, change directories to the "\models\research" directory:
+```
     (tensorflow1) C:\> cd C:\tensorflow1\models\research
+```
 Then copy and paste the following command into the command line and press Enter:
 ```
 protoc --python_out=. .\object_detection\protos\anchor_generator.proto .\object_detection\protos\argmax_matcher.proto .\object_detection\protos\bipartite_matcher.proto .\object_detection\protos\box_coder.proto .\object_detection\protos\box_predictor.proto .\object_detection\protos\eval.proto .\object_detection\protos\faster_rcnn.proto .\object_detection\protos\faster_rcnn_box_coder.proto .\object_detection\protos\grid_anchor_generator.proto .\object_detection\protos\hyperparams.proto .\object_detection\protos\image_resizer.proto .\object_detection\protos\input_reader.proto .\object_detection\protos\losses.proto .\object_detection\protos\matcher.proto .\object_detection\protos\mean_stddev_box_coder.proto .\object_detection\protos\model.proto .\object_detection\protos\optimizer.proto .\object_detection\protos\pipeline.proto .\object_detection\protos\post_processing.proto .\object_detection\protos\preprocessor.proto .\object_detection\protos\region_similarity_calculator.proto .\object_detection\protos\square_box_coder.proto .\object_detection\protos\ssd.proto .\object_detection\protos\ssd_anchor_generator.proto .\object_detection\protos\string_int_label_map.proto .\object_detection\protos\train.proto .\object_detection\protos\keypoint_box_coder.proto .\object_detection\protos\multiscale_anchor_generator.proto .\object_detection\protos\graph_rewriter.proto .\object_detection\protos\calibration.proto .\object_detection\protos\flexible_grid_anchor_generator.proto
 ```
-This will create a "name_pb2.py" file from every "name.proto" file in the "\object_detection\protos folder".
+This will create a *name_pb2.py* file from every *name.proto* file in the "\object_detection\protos folder".
 
 (Note: TensorFlow occassionally adds new .proto files to the \protos folder. If you get an error saying "ImportError: cannot import name 'something_something_pb2'", you may need to update the protoc command to include the new .proto files.)
 
