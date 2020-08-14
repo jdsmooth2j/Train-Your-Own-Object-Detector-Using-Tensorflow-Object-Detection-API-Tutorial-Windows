@@ -1,5 +1,5 @@
 # Train-Your-Customized-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows
-Train Your Own Object Detection Classifier Using TensorFlow on Windows 8.1
+##Train Your Own Object Detection Classifier Using TensorFlow on Windows 8.1
 Credits goes out to *Edje Electronics* and *Dat Tran* for their work relating to this tutorial.
 
 ## Quick Summary
@@ -89,6 +89,7 @@ Note: The model date and version will likely change in the future, but it should
 
 #### 2C. Download this tutorial's repository from my GitHub
 Download the full repository located on this page (scroll to the top and click Clone or Download) and extract all the contents directly into the "C:\tensorflow1\models\research\object_detection" directory. (You can overwrite the existing "README.md" file.) This establishes a specific directory structure that will be used for the rest of the tutorial.
+Note: put *frozen_inference_graph.pb* file to inference_graph folder in the "C:\tensorflow1\models\research\object_detection" directory afer downloading.
 
 Here is what "C:\tensorflow1\models\research\object_detection" folder should look like:
 ![alt text](https://github.com/jdsmooth2j/Train-Your-Own-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/directory_tensorflow1.png?raw=true)
