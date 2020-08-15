@@ -33,7 +33,7 @@ The tutorial's sole purpose is to describe how to train your customized convolut
 
 There are lots of tutorials available over the Internet on how to use TensorFlow’s Object Detection API to train a customized object classifier for multiple objects, Edje Electronics is the best one I have seen. This tutorial is written on *Windows 8.1*, and it should also work for *Windows 7, 8 and 10*. The version of tensorflow I used on this tutorial was *TensorFlow v1.5.0* (it will likely work for future versions of TensorFlow)
 
-*TensorFlow-GPU* versions allows your PC to use the 'graphics/video card' to "provide extra processing power" while performing training, it is recommended to install tensorflow-GPU version for this purpose. Using TensorFlow-GPU instead of a regular TensorFlow "reduces the training time" significantly, as a matter of fact based on Edje Electronics's experience, he documented a *reduced traning time by a factor of about 8* (3 hours to train instead of 24 hours). The CPU-only version of TensorFlow can also be used for this tutorial, but it will take much much longer. As a matter of fact, it took me about 15 hours to train my Insect Detector in 5,000 steps using the TensorFlow-CPU version and using the Faster R-CNN Inception v2 COCO model. If you choose to use the TensorFlow-CPU version, you do not need to install CUDA and cuDNN in Step 1.
+*TensorFlow-GPU* versions allows your PC to use the 'graphics/video card' to "provide extra processing power" while performing training, it is recommended to install tensorflow-GPU version for this purpose. Using TensorFlow-GPU instead of a regular TensorFlow "reduces the training time" significantly. According to Edje Electronics's experience, the author documented a *reduced traning time by a factor of about 8* (**3 hours** to train *instead of 24 hours*). The CPU-only version of TensorFlow can also be used for this tutorial, but it will take much much longer. As a matter of fact, it took me about 15 hours to train my Insect Detector in 5,000 steps using the TensorFlow-CPU version and using the Faster R-CNN Inception v2 COCO model. If you choose to use the TensorFlow-CPU version, you do not need to install CUDA and cuDNN in Step 1.
 
 ## Procedure
 ### 1. Installing Anaconda, CUDA, and cuDNN (if using GPU)
@@ -90,10 +90,12 @@ This tutorial utilizes the Faster-RCNN-Inception-V2 model. Download the model he
 * http://download.tensorflow.org/models/object_detection/faster_rcnn_inception_v2_coco_2018_01_28.tar.gz
 
 Open the just downloaded *faster_rcnn_inception_v2_coco_2018_01_28.tar.gz* file with a file archiver and extractor such as *WinRAR*, *WinZip* or *7-Zip* and extract the 'faster_rcnn_inception_v2_coco_2018_01_28' folder to the "C:\tensorflow1\models\research\object_detection" folder. 
+
 Note: The model date and version will likely change in the future, but it should still work with this tutorial.
 
 #### 2C. Download this tutorial's repository from my GitHub
 Download the full repository located on this page (scroll to the top and click 'Clone' or 'Download') and extract all the contents directly into the "C:\tensorflow1\models\research\object_detection" directory. (You can overwrite the existing *README.md* file.) This establishes a specific directory structure that will be used for the rest of the tutorial.
+
 Note: put *frozen_inference_graph.pb* file to inference_graph folder in the "C:\tensorflow1\models\research\object_detection" directory afer downloading.
 
 Here is what "C:\tensorflow1\models\research\object_detection" folder should look like:
@@ -186,6 +188,7 @@ You now have the TensorFlow object detection API all set up to use pre-trained m
 (tensorflow1) C:\tensorflow1\models\research\object_detection> jupyter notebook object_detection_tutorial.ipynb
 ```
 This opens up the Jupyter Notebook script in your default web browser and allows you to step through the code one section at a time. You can proceed through each section by typing *Shift+Enter* or by clicking the *Run* button in the upper toolbar. The section is done running when the “In [ * ]” text next to the section populates with a number (e.g. “In [3]”).
+
 Note: A portion of the script downloads the *ssd_mobilenet_v1* model from GitHub, which is about 74MB and this means it will take some time to complete the section, so *please be patient*.
 
 Once you have went all the way through the script, you should see two labeled images at the bottom section of the page. If you see this, then everything is working properly! Otherwise, the bottom section will report any errors encountered. 
@@ -382,6 +385,7 @@ Another way is to move a picture of the object or objects you want to test into 
     VIDEO_NAME = **'insects_testrun_01.mp4'**
 
 To test your object detector from a *webcam feed*, just plug in a USB webcam (such as a *Logitech* webcam, *raspberry pi camera*) and point it at the objects you want to test. 
+
 NOTE: To open default camera using default backend just pass 0 in the "video = cv2.VideoCapture()" line in the *object_detection_webcam.py* script as shown below.
     video = cv2.VideoCapture(**0**)
 
