@@ -7,7 +7,8 @@ Credits goes out to *Edje Electronics* and *Dat Tran* for their work relating to
 This repository explores the step by step process for training your own object detection classifier using TensorFlow's object detection API to detect multiple objects on Windows 10, 8, or 7. (As per Edje Electronics, it will also work on Linux-based OSes with some minor changes. Haven't tried it yet.) The tutorial was originally written using *TensorFlow version 1.5.0*. (This will also work for newer versions of TensorFlow.)
 
 Try to watch the excellent YouTube video tutorial made by Edje Electronics on the link below which walks through every step of the way of this tutorial.
-"How To Train an Object Detection Classifier Using TensorFlow (GPU) on Windows 10": http://www.youtube.com/watch?v=Rgpfk6eYxJA 
+"How To Train an Object Detection Classifier Using TensorFlow (GPU) on Windows 10": 
+* http://www.youtube.com/watch?v=Rgpfk6eYxJA 
 
 This readme exlpores every step required to get you through with your customized object detection classifier:
 ```
@@ -24,7 +25,7 @@ The repository have all the files needed to train an "insect detector" that can 
 
 ![Insect Detector Tested on Image File](https://github.com/jdsmooth2j/Train-Your-Own-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/test_output_05_threshold%3D0.6.png)
 
-![Insect Detector Tested on Video](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=-c-vxMn5tns)
+[![Watch the video](https://img.youtube.com/vi/-c-vxMn5tns/maxresdefault.jpg)](https://www.youtube.com/watch?v=-c-vxMn5tns)
 
 ## Introduction
 
@@ -44,7 +45,7 @@ I recommend Mark Jay's YouTube video (https://www.youtube.com/watch?v=RplXYjxgZb
 * https://developer.nvidia.com/rdp/cudnn-archive
 
 If you have an older version of TensorFlow installed, ensure you use the CUDA and cuDNN versions that are compatible with the TensorFlow version installed on your computer. Below is a table showing which version of TensorFlow requires which versions of CUDA and cuDNN.
-https://www.tensorflow.org/install/source#tested_build_configurations
+* https://www.tensorflow.org/install/source#tested_build_configurations
 
 Make sure you have installed Anaconda as described by Mark Jay's YouTube video, because we will utilize the anaconda virtual environment for the rest of this tutorial. (The anaconda environment I've used in this tutorial have **Python 3.6** installed)
 
@@ -69,11 +70,11 @@ If you are using an older version of TensorFlow, here is a table showing which G
 TF v1.7	                |  https://github.com/tensorflow/models/tree/adfd5a3aca41638aa9fb297c5095f33d64446d8f
 TF v1.8	                |  https://github.com/tensorflow/models/tree/abd504235f3c2eed891571d62f0a424e54a2dabc
 TF v1.9	                |  https://github.com/tensorflow/models/tree/d530ac540b0103caa194b4824af353f1b073553b
-TF v1.10	            |  https://github.com/tensorflow/models/tree/b07b494e3514553633b132178b4c448f994d59df
-TF v1.11	            |  https://github.com/tensorflow/models/tree/23b5b4227dfa1b23d7c21f0dfaf0951b16671f43
-TF v1.12	            |  https://github.com/tensorflow/models/tree/r1.12.0
-TF v1.13	            |  https://github.com/tensorflow/models/tree/r1.13.0
-Latest version	        |  https://github.com/tensorflow/models
+TF v1.10	               |  https://github.com/tensorflow/models/tree/b07b494e3514553633b132178b4c448f994d59df
+TF v1.11	               |  https://github.com/tensorflow/models/tree/23b5b4227dfa1b23d7c21f0dfaf0951b16671f43
+TF v1.12	               |  https://github.com/tensorflow/models/tree/r1.12.0
+TF v1.13	               |  https://github.com/tensorflow/models/tree/r1.13.0
+Latest version	         |  https://github.com/tensorflow/models
 
 Note:
 This tutorial was based using **TensorFlow v1.5** and this GitHub commit of the TensorFlow Object Detection API. If portions of this tutorial do not work, it may be necessary to install TensorFlow v1.5 and use this exact commit rather than the most up-to-date version.
@@ -86,7 +87,7 @@ TensorFlow provides several object detection models (pre-trained classifiers wit
 You can choose whichever model you want to train your own objection detection classifier. If you are planning to deploy the object detector on a device with 'low computational power' (such as Raspberry Pi and a decent laptop/PC), use the SDD-MobileNet model. Otherwise use a 'higher-end' laptop or desktop PC if you plan to deploy it using the Faster R-CNN models.
 
 This tutorial utilizes the Faster-RCNN-Inception-V2 model. Download the model here:
-http://download.tensorflow.org/models/object_detection/faster_rcnn_inception_v2_coco_2018_01_28.tar.gz
+* http://download.tensorflow.org/models/object_detection/faster_rcnn_inception_v2_coco_2018_01_28.tar.gz
 
 Open the just downloaded *faster_rcnn_inception_v2_coco_2018_01_28.tar.gz* file with a file archiver and extractor such as *WinRAR*, *WinZip* or *7-Zip* and extract the 'faster_rcnn_inception_v2_coco_2018_01_28' folder to the "C:\tensorflow1\models\research\object_detection" folder. 
 Note: The model date and version will likely change in the future, but it should still work with this tutorial.
