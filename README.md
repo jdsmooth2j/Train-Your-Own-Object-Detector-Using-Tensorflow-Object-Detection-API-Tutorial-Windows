@@ -25,7 +25,7 @@ The repository have all the files needed to train an "insect detector" that can 
 
 ![Insect Detector Tested on Image File](https://github.com/jdsmooth2j/Train-Your-Own-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/test_output_05_threshold%3D0.6.png)
 
-[![Watch the video](https://img.youtube.com/vi/-c-vxMn5tns/maxresdefault.jpg)](https://www.youtube.com/watch?v=-c-vxMn5tns)
+[![Watch the video](https://img.youtube.com/vi/-c-vxMn5tns/0.jpg)](http://www.youtube.com/watch?v=-c-vxMn5tns)
 
 ## Introduction
 
