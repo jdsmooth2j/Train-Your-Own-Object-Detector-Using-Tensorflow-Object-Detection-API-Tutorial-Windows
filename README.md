@@ -1,5 +1,6 @@
 # Train-Your-Customized-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows
 Train Your Own Object Detection Classifier Using TensorFlow on Windows
+
 Credits goes out to *Edje Electronics* and *Dat Tran* for their work relating to this tutorial.
 
 ## Quick Summary
