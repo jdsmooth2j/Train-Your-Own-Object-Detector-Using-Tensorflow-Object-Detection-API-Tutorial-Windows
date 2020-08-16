@@ -16,7 +16,7 @@ This readme exlpores every step required to get you through with your customized
 1. Installing Anaconda, CUDA, and cuDNN
 2. Setting up the Object Detector Directory Structure and Anaconda Virtual Environment
 3. Gathering and Labeling Images
-4. Generating Training data
+4. Generating Training Ddata
 5. Creating a Label Map and Configuring Training
 6. Training
 7. Exporting the Inference Graph
@@ -30,7 +30,7 @@ The repository have all the files needed to train an "insect detector" that can 
 
 ## Introduction
 
-The tutorial's sole purpose is to describe how to train your customized convolutional neural network object detectior for multiple objects, starting *from scratch*. After this tutorial, you will have your own object detection program that can identify and draw boundung boxes around specific objects in *images*, *videos*, or in your *webcam feed*.
+The tutorial's sole purpose is to describe how to train your customized convolutional neural network object detector for multiple objects, starting *from scratch*. After this tutorial, you will have your own object detection program that can identify and draw boundung boxes around specific objects in *images*, *videos*, or in your *webcam feed*.
 
 There are lots of tutorials available over the Internet on how to use TensorFlow’s Object Detection API to train a customized object classifier for multiple objects, Edje Electronics is the best one I have seen. This tutorial is written on *Windows 8.1*, and it should also work for *Windows 7, 8 and 10*. The version of tensorflow I used on this tutorial was *TensorFlow v1.5.0* (it will likely work for future versions of TensorFlow)
 
