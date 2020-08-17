@@ -222,13 +222,13 @@ With all the images/pictures gathered, it’s time to label the desired objects 
 * LabelImg GitHub link: https://github.com/tzutalin/labelImg
 * LabelImg download link: https://www.dropbox.com/s/tq7zfrcwl44vxan/windows_v1.6.0.zip?dl=1
 
-Download and install LabelImg, point it to your \images\train directory, and then draw a box around each object in each image. Repeat the process for all the images in the \images\test directory. This is kind of rigorous but is rewarding after the process.
+Download and install LabelImg, point it to your \images\train directory, and then draw a box around each object in each image. Repeat the process for all the images in the \images\test directory.
 
 ![Labeling-EFSB](https://github.com/jdsmooth2j/Train-Your-Own-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/labels_EFSB_many.png?raw=true)
 
 ![Labeling-whitefly](https://github.com/jdsmooth2j/Train-Your-Own-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/labels_whitefly_many.png?raw=true)
 
-LabelImg saves your 'label data' for each image as an ".xml" files and these files will then be 'used to generate TFRecords', which are one of the 'inputs' to the Tensorflow trainer. Once you have labeled and saved each images, there will be one .xml file for each image in the "\test" and "\train" directories.
+The most rigorous part of training your own dataset is labeling your training and testing images. Here is how I label my training and testing images. My labeling skills aren't too good but I think aren't too bad either. LabelImg saves your 'label data' for each image as an ".xml" files and these files will then be used to generate the 'TFRecords', which are one of the inputs to the Tensorflow trainer. Once you have labeled and saved each images, there will be one .xml file for each image in the "\test" and "\train" directories.
 
 #### 4. Generate the Training Data
 After the labeling all images, generate the TFRecords (which serves as input data to the TensorFlow training model). This tutorial uses the *xml_to_csv.py* and *generate_tfrecord.py* scripts from *Dat Tran’s Raccoon Detector dataset*, with slight modifications made by Edje Electronics to work with our directory structure.
