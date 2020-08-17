@@ -228,7 +228,7 @@ Download and install LabelImg, point it to your \images\train directory, and the
 
 ![Labeling-whitefly](https://github.com/jdsmooth2j/Train-Your-Own-Object-Detector-Using-Tensorflow-Object-Detection-API-Tutorial-Windows/blob/master/labels_whitefly_many.png?raw=true)
 
-LabelImg saves a *.xml* file containing the 'label data' for each image and these .xml files will be 'used to generate TFRecords', which are one of the inputs to the Tensorflow trainer. Once you have labeled and saved each images, there will be one .xml file for each image in the "\test" and "\train" directories.
+LabelImg saves your 'label data' for each image as an ".xml" files and these files will then be 'used to generate TFRecords', which are one of the 'inputs' to the Tensorflow trainer. Once you have labeled and saved each images, there will be one .xml file for each image in the "\test" and "\train" directories.
 
 #### 4. Generate the Training Data
 After the labeling all images, generate the TFRecords (which serves as input data to the TensorFlow training model). This tutorial uses the *xml_to_csv.py* and *generate_tfrecord.py* scripts from *Dat Tran’s Raccoon Detector dataset*, with slight modifications made by Edje Electronics to work with our directory structure.
