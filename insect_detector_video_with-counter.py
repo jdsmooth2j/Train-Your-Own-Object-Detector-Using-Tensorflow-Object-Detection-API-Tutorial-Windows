@@ -127,7 +127,7 @@ while(video.isOpened()):
         category_index,
         use_normalized_coordinates=True,
         line_thickness=4,
-        min_score_thresh=0.50)
+        min_score_thresh=0.30)
         
     # count objects
     final_score = np.squeeze(scores)    
