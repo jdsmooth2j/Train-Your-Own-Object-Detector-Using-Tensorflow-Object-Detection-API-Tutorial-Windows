@@ -24,6 +24,7 @@ import cv2
 import numpy as np
 import tensorflow as tf
 import sys
+import time
 
 # This is needed since the notebook is stored in the object_detection folder.
 sys.path.append("..")
@@ -34,7 +35,7 @@ from utils import visualization_utils as vis_util
 
 # Name of the directory containing the object detection module we're using
 MODEL_NAME = 'inference_graph'
-VIDEO_NAME = 'path-to-video'
+VIDEO_NAME = 'whitefly-test-sample-01.mp4'
 
 # Grab path to current working directory
 CWD_PATH = os.getcwd()
@@ -92,7 +93,19 @@ num_detections = detection_graph.get_tensor_by_name('num_detections:0')
 # Open video file
 video = cv2.VideoCapture(PATH_TO_VIDEO)
 
+# Starts timing from 0 seconds after opening video file
+start = time.time()
+
+# Path to csv file for logs
+csv_log_file_path = 'log_file.csv' # you can change for yourself
+
+# Create csv file for logs
+with open(csv_log_file_path, "w") as log_file:
+  # now you have an empty file
+  pass
+
 while(video.isOpened()):
+
 
     # Acquire frame and expand frame dimensions to have shape: [1, None, None, 3]
     # i.e. a single-column array, where each item in the column has the pixel RGB value
@@ -131,6 +144,17 @@ while(video.isOpened()):
     # All the results have been drawn on the frame, so it's time to display it.
     cv2.imshow('Insect Detector', frame)
 
+    # After showing frame and detections lets check timing
+    end = time.time()
+    delta = end-start # how much time spent from the start of the script in seconds
+    soon_flag = False # flag for not logging a lot of counts around 15 minutes
+    if (np.abs((15 - (delta/60) % 15)) < 0.1) & (soon_flag == False):
+        # Log counts
+        with open(csv_log_file_path,'a') as fd:
+            fd.write(str(count))
+        soon_flag = True
+    elif (np.abs((15 - (delta/60) % 15)) > 0.1):
+        soon_flag = False
     # Press 'q' to quit
     if cv2.waitKey(1) == ord('q'):
         break
